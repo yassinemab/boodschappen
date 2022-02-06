@@ -31,6 +31,7 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
+
     var success = false
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/backend/validation/email.php", false);
