@@ -6,8 +6,6 @@
     <script type="text/javascript" src="register.js"></script>
 </head>
 
-
-
 <body>
     <div class="header"></div>
     <div class="main-container">
