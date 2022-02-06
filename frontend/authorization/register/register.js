@@ -108,8 +108,6 @@ function checkForm() {
     }
 }
 
-$(function() {
-    document.querySelector("form").onkeyup(function() {
-        checkForm()
-    })
+$(function () {
+
 })
