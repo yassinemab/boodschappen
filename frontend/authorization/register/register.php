@@ -3,7 +3,6 @@
 
 <head>
     <?php include_once "../../head.html"; ?>
-    <script type="text/javascript" src="register.js"></script>
 </head>
 
 <body>
@@ -13,7 +12,7 @@
             <div class="shadow row px-15">
                 <div class="my-3 title">Registreren</div>
                 <?php if (isset($_GET['error'])) echo "<div class='col-12 text-center error'>" . urldecode($_GET['error']) . "</div>"; ?>
-                <form class="p-2 register-form" action="/backend/authorization/register.php" method="POST">
+                <form class="p-2 register-form" action="/backend/register/register.php" method="POST">
                     <div class="col-12 d-flex justify-content-between">
                         <div class="w-49 sub-title">Voornaam</div>
                         <div class="w-49 sub-title">Achternaam</div>
@@ -53,6 +52,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="register.js"></script>
 </body>
 
 </html>

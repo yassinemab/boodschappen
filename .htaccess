@@ -4,4 +4,4 @@ RewriteEngine on
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ /index.php [NC,L]
+RewriteRule ^(.*)$ /error.html [NC,L]
