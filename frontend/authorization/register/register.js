@@ -125,7 +125,6 @@ function validateConfirmPassword() {
 }
 
 function checkForm() {
-    console.log(valid)
     if (all(valid)) {
         $('.submit').removeAttr('disabled');
     } else {

@@ -1,6 +1,5 @@
 <?php
 
-
 $host = 'rdbms.strato.de';
 $database = 'DBS5427279';
 $username = 'DBU127871';
