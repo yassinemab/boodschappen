@@ -1,17 +1,15 @@
-<div class="d-flex align-items-center p-2 shadow">
-    <div class="px-5 col-md-8 text-left logo"><img style="width: 150px; height: auto;" src="/assets/logo.png"></div>
-    <div class="row col-md-4 header-content">
-        <div class="col-md-3"><a href="">Item</a></div>
-        <div class="col-md-3"><a href="">Item</a></div>
-        <div class="col-md-3"><a href="">Item</a></div>
-        <div class="col-md-3"><a href="">
-                <?php if (isset($_SESSION['id'])) {
-                    echo "<div class='profile'><div class='welcome-user'>Hello, " . $_SESSION['name'] . "</div><div class='profile-picture'></div></div>";
-                } else {
-                    echo "<a href='/frontend/authorization/register/register.php'><div class='login'>Login</div></a>";
-                }
-                ?>
-            </a></div>
-
+<div class="d-flex align-items-center p-2 shadow px-5">
+    <div class="col-md-3 text-left logo"><img style="width: 35%; height: auto;" src="/assets/logo.png"></div>
+    <div class="row col-md-6 header-content d-flex justify-content-center align-items-center text-center">
+        <div class="col-2"><a href=""><i class="circle-button fa-solid fa-magnifying-glass"></i></a></div>
+        <div class="col-2"><a href="/">Home</a></div>
+        <div class="col-2"><a href="">Over</a></div>
     </div>
+    <div class="row col-3 header-content align-items-center">
+        <div class="col-8 text-end"><a href=""><i class="circle-button fa-solid fa-basket-shopping"></i></a></div>
+        <div class="col-4 text-end"><a href='/frontend/authorization/register/register.php'>
+                    <div class='login'>Login</div>
+        </div>
+    </div>
+</div>
 </div>

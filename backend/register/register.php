@@ -8,11 +8,15 @@ include '../validation/password.php';
 
 $data = json_decode(file_get_contents("php://input"));
 echo $_POST['name'];
-echo $data->name . $data->lastName. $data->password . $data->confirmPassword. $data->email;
-if(!(validateName($data->name) && validateName($data->surname) && validateEmail($data->email) && validatePassword($data->password) && validatePassword($data->confirmPassword) && $data->password != $data->confirmPassword)) {
+echo $data->name . $data->lastName . $data->password . $data->confirmPassword . $data->email;
+if (!(validateName($data->name) && validateName($data->surname) && validateEmail($data->email) && validatePassword($data->password) && validatePassword($data->confirmPassword) && $data->password != $data->confirmPassword)) {
     $msg = "Registreren mislukt";
     header('Location: /frontend/authorization/register/register.php?error=' . urlencode($msg));
     exit();
 }
 
-print_r($conn);
+$name = $conn->real_escape_string($name);
+$lastName = $conn->real_escape_string($lastName);
+$password = $conn->real_escape_string($password);
+$email = $conn->real_escape_string($email);
+$confirmPassword = $conn->real_escape_string($confirmPassword);

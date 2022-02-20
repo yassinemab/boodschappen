@@ -133,8 +133,8 @@ function checkForm() {
 }
 
 $(document).ready(function () {
+    // if(window.location.href.includes('?')) window.location = window.location.href.slice('?')[0]
     var form = document.querySelector("form")
-    console.log(form.name.value)
     if (form.name.value != '') validateName(form.name)
     if (form.surname.value != '') validateSurname(form.surname)
     if (form.email.value != '') validateEmail(form.email)

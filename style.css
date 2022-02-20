@@ -1,4 +1,5 @@
 body {
+    font-family: 'Roboto', sans-serif !important;
     background-color: whitesmoke !important;
     word-wrap: break-word;
 }
@@ -41,6 +42,34 @@ body {
 
 .w-49 {
     width: 49%;
+}
+
+.circle-button {
+    transition: .1s;
+    background-color: whitesmoke;
+    color: rgb(70, 118, 173);
+    padding: 18px !important;
+    border: 2px solid rgb(70, 118, 173);
+    border-radius: 50%;
+}
+
+.circle-button:hover {
+    background-color: rgb(70, 118, 173);
+    color: whitesmoke;
+}
+
+.header-content {
+    font-size: 23px;
+}
+
+.header a {
+    text-decoration: none;
+    color: rgb(70, 118, 173);
+}
+
+.header a:hover {
+    color: rgb(110, 160, 218);
+    transition: .2s;
 }
 
 .submit {
