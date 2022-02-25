@@ -4,10 +4,9 @@ $data = json_decode(file_get_contents("php://input"));
 $query = $data->query;
 
 if (!isset($query)) {
-    echo "FAIL";
     exit();
 }
 
-$command = escapeshellcmd('python3 products.py ' . $query);
-$output = shell_exec($command);
+$command = exec('python3 products.py ' . $query, $output);
+
 echo json_encode($output);
