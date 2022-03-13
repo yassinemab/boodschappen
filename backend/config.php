@@ -14,6 +14,6 @@ $password = '';
 
 $succes = false;
 
-$conn = new mysqli($host, $username, $password);
+$conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) die(mysqli_connect_error());

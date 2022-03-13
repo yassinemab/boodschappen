@@ -6,13 +6,12 @@
 </head>
 
 <body>
-    <div class="header"></div>
     <div class="main-container">
         <div class="mt-8 main">
-            <div class="shadow row px-15">
+            <div class="card row px-15">
                 <div class="my-3 title">Registreren</div>
                 <?php if (isset($_GET['error'])) echo "<div class='col-12 text-center general-error'>" . urldecode($_GET['error']) . "</div>"; ?>
-                <form class="p-2 register-form" action="/backend/register/register.php" method="POST">
+                <form class="p-2 register-form" action="/backend/register/register.php" method="POST" enctype=”multipart/form-data”>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="w-49 sub-title">Voornaam</div>
                         <div class="w-49 sub-title">Achternaam</div>
@@ -46,7 +45,7 @@
                     </div>
                     <div class="terms">Door te registreren gaat u akkoord met onze <a href="#">Servicevoorwaarden</a>.</div>
                     <div class="submit-container mt-5">
-                        <button class="submit mb-5" type="submit" name="submit" disabled>Aanmelden</button>
+                        <button class="submit mb-5" type="submit" name="submit" disabled>Maak een gratis account</button>
                     </div>
                 </form>
             </div>
