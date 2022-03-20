@@ -1,4 +1,12 @@
 <?php
+
+// $data = json_decode(file_get_contents("php://input"));
+// $query = $data->query;
+
+// if (!isset($query)) {
+//     exit();
+// }
+
 define(
     "HEADERS",
     [
@@ -15,7 +23,7 @@ $token = explode('"', get_token())[3];
 function get_products_by_page($page, $token, $query)
 {
     $url = 'https://api.ah.nl/mobile-services/product/search/v2';
-    $params = ["sortOn" => 'RELEVANCE', "page" => $page, "size" => 100, "query" => $query];
+    $params = ["sortOn" => 'RELEVANCE', "page" => $page, "size" => 50, "query" => $query];
     $request_url = $url . "?" .  http_build_query($params);
     $curl = curl_init($request_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -34,8 +42,9 @@ function get_products_by_page($page, $token, $query)
 
 function ah_get_all_products($query, $token)
 {
+    // echo $token;
     $products = get_products_by_page(0, $token, $query);
-    echo $products;
+    return $products;
     // $all_products = [];
     // array_push($all_products, $products);
     // for ($i = 1; $i < $products['page']['totalPages']; $i++) {
@@ -57,3 +66,5 @@ function get_token()
     curl_close($curl);
     return $response;
 }
+
+// ah_get_all_products($query, $token);

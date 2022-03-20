@@ -7,9 +7,9 @@ if (!isset($query)) {
     exit();
 }
 
-function get_products($query)
+function get_deka_products($query)
 {
-    $url = 'https://api.dirk.nl/v1/assortmentcache/search/66';
+    $url = 'https://api.dekamarkt.nl/v1/assortmentcache/search/283';
     $params = ["api_key" => '6d3a42a3-6d93-4f98-838d-bcc0ab2307fd', "search" => $query, "limit" => 30];
     $request_url = $url . "?" .  http_build_query($params);
     $curl = curl_init($request_url);
@@ -20,10 +20,8 @@ function get_products($query)
     return $response;
 }
 
-function dirk_get_all_products($query)
+function deka_get_all_products($query)
 {
-    $products = get_products($query);
+    $products = get_deka_products($query);
     return $products;
 }
-
-// dirk_get_all_products($query);

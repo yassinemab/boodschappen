@@ -76,8 +76,26 @@
                 </div>
             </div>
             <div class="col-md-10 text-start">
-                <div class="mt-5 ms-3 primary-title"></div>
+                <div class="d-flex">
+                    <div class="col-md-10 mt-5 ms-3 primary-title"></div>
+                    <div class="col-md-2 sort" style="margin-right: 2%;"><select onchange="sortList.call(this)">
+                            <option value="0">Sorteren op</option>
+                            <option value="1">Alfabetische volgorde</option>
+                            <option value="2">Prijs laag-hoog</option>
+                            <option value="3">Prijs hoog-laag</option>
+                            <option value="4">Relevantie</option>
+                        </select></div>
+                </div>
                 <div class="product-results"></div>
+                <div class="pagination">
+                    <div class="pages">
+                        <div class="first">1</div>
+                        <div class="previous"></div>
+                        <div class="current"></div>
+                        <div class="next"></div>
+                        <div class="last"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,10 +9,12 @@ HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0'
 }
 
+
 class JumboConnector:
     def search_products(self, query=None, page=0, size=30):
         if (page + 1 * size) > 30:
-            raise PaginationLimitReached('Pagination limit on Jumbo connector of 30')
+            raise PaginationLimitReached(
+                'Pagination limit on Jumbo connector of 30')
 
         response = requests.get(
             'https://mobileapi.jumbo.com/v12/search',
@@ -37,7 +39,8 @@ class JumboConnector:
             try:
                 response = self.search_products(page=page, **kwargs)
             except PaginationLimitReached as e:
-                logger.warning('Pagination limit reached, capping response: {}'.format(e))
+                logger.warning(
+                    'Pagination limit reached, capping response: {}'.format(e))
                 return
             yield from response['products']['data']
 
@@ -58,7 +61,8 @@ class JumboConnector:
         :param product: Product ID or raw product object containing ID field
         :return: dict containing product information
         """
-        product_id = product if not isinstance(product, dict) else product['id']
+        product_id = product if not isinstance(
+            product, dict) else product['id']
         response = requests.get(
             'https://mobileapi.jumbo.com/v12/products/{}'.format(product_id),
             headers=HEADERS
@@ -77,7 +81,8 @@ class JumboConnector:
         return response.json()['categories']['data']
 
     def get_sub_categories(self, category):
-        category_id = category if not isinstance(category, dict) else category['id']
+        category_id = category if not isinstance(
+            category, dict) else category['id']
         response = requests.get(
             'https://mobileapi.jumbo.com/v12/categories',
             headers=HEADERS,
