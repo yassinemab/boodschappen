@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header header-shadow">
     <div class="main-container d-flex align-items-center">
         <div class="col-md-2 text-left logo"><a href="/"><img style="width: 60%; height: auto;" src="/assets/logo.png"></div></a>
         <div class="row col-6 d-flex align-items-center">
@@ -8,10 +8,12 @@
             <!-- <div class="col-2"><a href=""><i class="circle-button fa-solid fa-magnifying-glass"></i></a></div> -->
         </div>
         <div class="row col-4 header-content align-items-center">
-            <?php include '../../backend/isLoggedIn.php';
-            if (isLoggedIn() == True) {
+            <?php
+            include_once "../../backend/config.php";
+            include '../../backend/isLoggedIn.php';
+            if (isLoggedIn($conn) == True) {
                 echo "<div class='col-8'>
-                        <a class='flex-column d-flex align-items center' href=''>
+                        <a class='flex-column d-flex align-items center' href='/frontend/shopping-list/shopping-list.php'>
                             <i class='col-12 text-center fa-regular fa-basket-shopping'><div class='badge'>4</div></i>
                             <div class='mt-1 col-12 text-center header-subtext'>Winkelwagen</div>
                         </a>

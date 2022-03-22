@@ -6,7 +6,8 @@
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="header"></div>
+    <div class="register-container">
         <div class="mt-8 main">
             <div class="card row px-15">
                 <div class="my-3 title">Inloggen</div>

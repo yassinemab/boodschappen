@@ -6,11 +6,11 @@ function parse(list) {
         var html = document.querySelector(".product-results")
         html.innerHTML += `<div class="product-card ${isHuismerk ? "huismerk-card" : ""}">
                                 <div class="product-image">
-                                    <img class="test" src="${item["image_url"]}">
+                                    <img src="${item["image_url"]}">
                                 </div>
                                 <div class="d-flex row align-items-center">
                                     <div class="col-md-8">
-                                        <div class="product-title">${item["title"].length > 40 ? item["title"].slice(0, 40) + '...' : item["title"]}</div>
+                                        <div class="product-title">${item["title"].length > 35 ? item["title"].slice(0, 35) + '...' : item["title"]}</div>
                                     </div>
                                     <div class="col-md-4 align-items-center">
                                         <div class="d-flex justify-content-end me-4"><span class="price-title">€${item["price"]}</span></div>
@@ -20,7 +20,7 @@ function parse(list) {
                                 <div class="d-flex row align-items-center">
                                     <div class="col-md-6">
                                         <div class="d-flex justify-content-start">
-                                            <div class="product-card-add"><i class="fa-solid fa-plus"></i></div>
+                                            <div id="${item["id"]}" class="product-card-add" onclick="addToCart(${item["id"]})"><i class="fa-solid fa-plus"></i></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -31,6 +31,29 @@ function parse(list) {
                             </div>`
     }
 }
+
+function addToCart(id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../../backend/shopping-list/addToCart.php", false);
+    var data = { 'id': id }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText == "LOGIN") {
+                alert("login pls")
+                // Open modal to login
+            }
+            else if (this.responseText == "SUCCESS") {
+                // Change amount of items in cart left, maybe do some weird ass animation
+            }
+        }
+    }
+    xhttp.send(JSON.stringify(data));
+}
+
+function showAnimation() {
+
+}
+
 
 function sortAlphabetically(a, b) {
     if (a["title"] === b["title"]) {
@@ -83,7 +106,7 @@ var list = []
 var originalList = []
 
 $(function () {
-    var query = location.search.split("&")[0].split("=")[1].replace("+", " ")
+    var query = location.search.split("&")[0].split("=")[1].replace(/\+/g, " ")
     var page = location.search.split("&")[1]
     if (page !== undefined) page = page.split("=")[1].replace("+", " ")
     else page = 1
@@ -97,7 +120,8 @@ $(function () {
             originalList = list
             var amntOfResults = list.pop()
             document.querySelector(".primary-title").innerHTML =
-                `${capitalizeFirstLetter(query)}<div class='tertiary-title'>${amntOfResults}</div>`
+                `${capitalizeFirstLetter(query)}<div class='tertiary-title'>${amntOfResults}</div>
+ `
             parse(list)
         }
         else {
@@ -105,5 +129,21 @@ $(function () {
         }
     };
     xhttp.send(JSON.stringify(data));
+
+    $(".product-card-add").on("click", function () {
+        var $btn = $(this);
+        var $li = $btn.closest('.product-card');
+        var btnOffsetTop = $btn.offset().top;
+        var btnOffsetRight = window.innerWidth - $btn.offset().left;
+        $li.find('img')
+            .clone()
+            .css({ top: btnOffsetTop, right: btnOffsetRight })
+            .addClass("zoom")
+            .appendTo($li);
+
+        setTimeout(function () {
+            $(".zoom").remove();
+        }, 1000);
+    });
 
 })

@@ -12,17 +12,16 @@
         <div class="search-results-header">
             <img src="/assets/home-background1.jpg">
             <div class="centered">
-                <div class="row">
-                    <h1 class="white-title mb-4">Zoek een product en vind de beste aanbiedingen!</h1>
-                    <form class="row ms-2" action="/frontend/search/search.php">
-                        <span class="col-md-7 col-sm-6">
-                            <input class="search-bar-results" name="query" type="text" placeholder="Bijvoorbeeld Appelsap">
-                        </span>
-                        <span class="col-md-4 col-sm-6 text-start ms-5">
-                            <button class="btn-md submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Zoeken</button>
-                        </span>
-                    </form>
-                </div>
+                <h1 class="white-title mb-4">Waar ben je naar op zoek?</h1>
+                <form class="d-flex justify-content-center" action="/frontend/search/search.php">
+                    <span class="col-md-8 col-sm-6 pe-2 text-end">
+                        <input class="search-bar-results" name="query" type="text" placeholder="Bijvoorbeeld Appelsap">
+                    </span>
+                    <span class="col-md-4 col-sm-6 text-start">
+                        <button class="btn-md submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Zoeken</button>
+                    </span>
+                </form>
+                <div class="suggested-searches tertiary-title">Hier moeten suggestions komen</div>
             </div>
         </div>
     </div>
@@ -77,17 +76,18 @@
             </div>
             <div class="col-md-10 text-start">
                 <div class="d-flex">
-                    <div class="col-md-10 mt-5 ms-3 primary-title"></div>
-                    <div class="col-md-2 sort" style="margin-right: 2%;"><select onchange="sortList.call(this)">
+                    <div class="col-md-9 mt-5 ms-3 primary-title"></div>
+                    <div class="col-md-3 d-flex sort align-items-end"><select  class="sort" onchange="sortList.call(this)">
                             <option value="0">Sorteren op</option>
                             <option value="1">Alfabetische volgorde</option>
                             <option value="2">Prijs laag-hoog</option>
                             <option value="3">Prijs hoog-laag</option>
                             <option value="4">Relevantie</option>
-                        </select></div>
+                        </select>
+                    </div>
                 </div>
                 <div class="product-results"></div>
-                <div class="pagination">
+                <!-- <div class="pagination">
                     <div class="pages">
                         <div class="first">1</div>
                         <div class="previous"></div>
@@ -95,7 +95,7 @@
                         <div class="next"></div>
                         <div class="last"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -18,12 +18,12 @@ function validateName(name) {
             if (this.responseText != '') {
                 error.style.display = "block"
                 error.innerHTML = this.responseText
-                name.style.border = "2px solid red";
+                name.style.borderBottom = "2px solid red";
                 valid[0] = false
             }
             else {
                 error.style.display = "none"
-                name.style.border = "2px solid green";
+                name.style.borderBottom = "2px solid green";
                 valid[0] = true
             }
         }
@@ -41,12 +41,12 @@ function validateSurname(surname) {
             if (this.responseText != '') {
                 error.style.display = "block"
                 error.innerHTML = this.responseText
-                surname.style.border = "2px solid red";
+                surname.style.borderBottom = "2px solid red";
                 valid[1] = false
             }
             else {
                 error.style.display = "none"
-                surname.style.border = "2px solid green";
+                surname.style.borderBottom = "2px solid green";
                 valid[1] = true
             }
         }
@@ -65,12 +65,12 @@ function validateEmail(email) {
                 success = false
                 error.style.display = "block"
                 error.innerHTML = this.responseText
-                email.style.border = "2px solid red";
+                email.style.borderBottom = "2px solid red";
                 valid[2] = false
             }
             else {
                 error.style.display = "none"
-                email.style.border = "2px solid green";
+                email.style.borderBottom = "2px solid green";
                 valid[2] = true
             }
         }
@@ -89,13 +89,13 @@ function validatePassword(password) {
                 success = false
                 error.style.display = "block"
                 error.innerHTML = this.responseText
-                password.style.border = "2px solid red";
+                password.style.borderBottomBottom = "2px solid red";
                 valid[3] = false
             }
             else {
                 valid[3] = true
                 error.style.display = "none"
-                password.style.border = "2px solid green";
+                password.style.borderBottom = "2px solid green";
             }
         }
     };
@@ -108,19 +108,19 @@ function validateConfirmPassword() {
     if (form[3].value !== form[4].value) {
         error.style.display = "block"
         error.innerHTML = "Wachtwoorden komen niet overeen"
-        form[4].style.border = "2px solid red";
+        form[4].style.borderBottom = "2px solid red";
         valid[4] = false
     }
     else if (form[3].value == '') {
         error.style.display = "block"
         error.innerHTML = "Wachtwoord herhalen is verplicht"
-        form[4].style.border = "2px solid red";
+        form[4].style.borderBottom = "2px solid red";
         valid[4] = false
     }
     else {
         valid[4] = true
         error.style.display = "none"
-        form[4].style.border = "2px solid green";
+        form[4].style.borderBottom = "2px solid green";
     }
 }
 

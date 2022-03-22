@@ -1,7 +1,6 @@
 <?php
 
-function isLoggedIn() {
-    include_once 'config.php';
+function isLoggedIn($conn) {
     if(!isset($_COOKIE['auth_token'])) {
         return false;
     }

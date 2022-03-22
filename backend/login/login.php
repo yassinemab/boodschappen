@@ -1,6 +1,6 @@
 <?php
 
-include_once 'backend/config.php';
+include_once '../config.php';
 
 function random_str(
     int $length,
