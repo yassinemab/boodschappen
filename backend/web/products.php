@@ -6,39 +6,8 @@ require_once 'webscraping/dirk.php';
 require_once 'webscraping/vomar.php';
 require_once 'webscraping/dekamarkt.php';
 include_once "../brands/brands.model.php";
+include_once "../products/products.model.php";
 // require_once 'webscraping/jumbo.php';
-
-function insertProduct($product, $query_id, $conn)
-{
-    $title = $conn->real_escape_string($product["title"]);
-    $query = "SELECT id FROM products WHERE title = $title";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) {
-        $product_id = $result->fetch_assoc()["id"];
-    } else {
-        $query = "INSERT INTO products (title, description, unit_size, brand_id, avg_price, image_url) VALUES (?, ?, ?, ?, ?, ?)";
-        $brand = getBrandByName($product["brand"], $conn);
-        $brand = $brand == -1 ? "" : $brand["id"];
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param(
-            "sssdds",
-            $product["title"],
-            $product["description"],
-            $product["unitSize"],
-            $brand,
-            $product["price"],
-            $product["image_url"]
-        );
-        $stmt->execute();
-        $product_id = $conn->insert_id;
-    }
-
-    $query = "INSERT INTO query_products (query_id, product_id) VALUES (?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("dd", $query_id, $product_id);
-    $stmt->execute();
-    return $product_id;
-}
 
 $query = "SELECT MAX(Id) as MAX_ID from products";
 $result = $conn->query($query);
@@ -57,13 +26,6 @@ function insertQuery($query, $conn)
     $stmt->bind_param("ss", $query, date("Y/m/d"));
     $stmt->execute();
     return $conn->insert_id;
-}
-
-function getProductById($id, $conn)
-{
-    $query = "SELECT * FROM products WHERE id = '$id'";
-    $result = $conn->query($query);
-    return $result->fetch_assoc();
 }
 
 //MULTITHREAD DEZE SHIT
@@ -93,7 +55,6 @@ if ($result->num_rows > 0) {
     // This means the query needs to be updated.
     if (floor($datediff / (60 * 60 * 24)) >= 1) {
         $db_query = "UPDATE queries SET updated_at = $now";
-        echo $now;
         $db_query = "DELETE FROM products WHERE query_id = $query_id";
         // $conn->query()
         // fetch the shit from the apis
@@ -259,7 +220,8 @@ foreach ($items as $i) {
 
 foreach ($categorised_products as $i) {
     $product_id = insertProduct($i, $query_id, $conn);
-    $i["id"] = $product_id;
+    $categorised_products[array_search($i, $categorised_products)]["id"] = $product_id;
+    // $i["id"] = $product_id;
 }
 
 // usort($categorised_products, function ($a, $b) { //Sort the array using a user defined function

@@ -13,7 +13,7 @@ function parse(list) {
                                         <div class="product-title">${item["title"].length > 35 ? item["title"].slice(0, 35) + '...' : item["title"]}</div>
                                     </div>
                                     <div class="col-md-4 align-items-center">
-                                        <div class="d-flex justify-content-end me-4"><span class="price-title">€${item["price"]}</span></div>
+                                        <div class="d-flex justify-content-end me-4"><span class="price-title">€${parseFloat(item["price"]).toFixed(2)}</span></div>
                                         <div class="d-flex justify-content-end me-4"><span class="tertiary-title">${item["unitSize"]}</span></div>
                                     </p>
                                 </div>
@@ -106,6 +106,7 @@ var list = []
 var originalList = []
 
 $(function () {
+    document.getElementsByClassName("search-results")[0].style.opacity = "0"
     var query = location.search.split("&")[0].split("=")[1].replace(/\+/g, " ")
     var page = location.search.split("&")[1]
     if (page !== undefined) page = page.split("=")[1].replace("+", " ")
@@ -120,8 +121,10 @@ $(function () {
             originalList = list
             var amntOfResults = list.pop()
             document.querySelector(".primary-title").innerHTML =
-                `${capitalizeFirstLetter(query)}<div class='tertiary-title'>${amntOfResults}</div>
- `
+            `${capitalizeFirstLetter(query)}<div class='tertiary-title'>${amntOfResults}</div>`
+            document.getElementsByClassName("loading")[0].style.opacity = "0"
+            document.getElementsByClassName("search-results")[0].style.opacity = "1"
+            // setTimeout(100)
             parse(list)
         }
         else {
@@ -130,19 +133,19 @@ $(function () {
     };
     xhttp.send(JSON.stringify(data));
 
-    $(".product-card-add").on("click", function () {
+    $(".product-card-add").on("click", async function () {
         var $btn = $(this);
         var $li = $btn.closest('.product-card');
         var btnOffsetTop = $btn.offset().top;
         var btnOffsetRight = window.innerWidth - $btn.offset().left;
-        $li.find('img')
+        await $li.find('img')
             .clone()
             .css({ top: btnOffsetTop, right: btnOffsetRight })
             .addClass("zoom")
             .appendTo($li);
 
-        setTimeout(function () {
-            $(".zoom").remove();
+        setTimeout(async function () {
+            await $(".zoom").remove();
         }, 1000);
     });
 

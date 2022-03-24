@@ -72,7 +72,7 @@ input:-webkit-autofill {
     border: 1px solid whitesmoke;
     position: relative;
     cursor: pointer;
-    color: rgb(64, 72, 82);
+    color: rgb(44, 74, 109);
     font-size: 35px;
 }
 
@@ -92,7 +92,7 @@ input:-webkit-autofill {
 
 .fa-user:hover,
 .fa-basket-shopping:hover {
-    color: rgb(144, 164, 187);
+    color:rgb(88, 121, 160);
 }
 
 .main-container {
@@ -108,6 +108,11 @@ input:-webkit-autofill {
 .tertiary-title {
     color: rgb(133, 133, 133);
     font-size: 16px;
+}
+
+.quartenary-title {
+    color: rgb(133, 133, 133);
+    font-size: 10px;
 }
 
 .primary-button {
@@ -253,21 +258,6 @@ input:-webkit-autofill {
     background-color: rgb(82, 136, 197);
 }
 
-/* .submit::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, whitesmoke, transparent);
-    transition: .4s;
-}
-
-.submit:hover::before {
-    left: 100%;
-} */
-
 .input {
     height: 50px;
     padding: 0px 0px 0px 0px;
@@ -329,13 +319,28 @@ input:-webkit-autofill {
     border-radius: 50%;
     padding: 5px 10px 5px 10px;
     font-size: 20px;
-    /* margin-bottom: 20px; */
     margin-left: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .product-card-add:hover {
     background-color: rgb(82, 136, 197);
+}
+
+.product-card-remove {
+    position: relative;
+    bottom: 0 !important;
+    color: rgb(70, 118, 173);
+    background-color: rgb(143, 186, 236);
+    border-radius: 50%;
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+    margin-left: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.product-card-remove:hover {
+    background-color: rgb(124, 166, 214);
 }
 
 .product-card-save {
@@ -401,10 +406,61 @@ input:-webkit-autofill {
     font-weight: 500;
 }
 
+.product-grid {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.product-grid-image img {
+    padding: 20px;
+    height: 150px;
+    width: 150px;
+}
+
+.product-info {
+    padding: 10px 0 10px 0;
+}
+
+.add-amount {
+    outline: none;
+    width: 30%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid rgb(70, 118, 173);
+    padding: 5px 10px 5px 10px;
+}
+
+.color-blue {
+    color: rgb(70, 118, 173) !important;
+}
+
+.list-info {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+}
+
+.calculate {
+    text-align: center;
+}
+
 .primary-title {
     color: rgb(70, 118, 173);
     font-size: 50px;
     font-weight: 500;
+}
+
+.secondary-title {
+    color: rgb(70, 118, 173);
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .centered {
@@ -412,13 +468,28 @@ input:-webkit-autofill {
     /* display: flex; */
     position: absolute;
     text-align: center;
-    top: 16rem;
+    top: 12rem;
     width: 100%;
 }
 
 .btn-md {
     height: 70px !important;
     width: 9rem !important;
+}
+
+.search-results {
+    opacity: 0;
+    transition: .3s;
+}
+
+.loading {
+    position: absolute;
+    top: 40vh;
+    margin-left: 45vw;
+    margin-right: 45vw;
+    width: 10vw;
+    height: auto;
+    transition: .3s;
 }
 
 .search-bar-results {
@@ -430,13 +501,6 @@ input:-webkit-autofill {
     padding: 25px;
     font-size: 20px;
     outline: none;
-}
-
-
-.secondary-title {
-    color: rgb(75, 75, 75);
-    font-size: 50px;
-    font-weight: 500;
 }
 
 .secondary-button:hover {

@@ -14,14 +14,12 @@
             if (isLoggedIn($conn) == True) {
                 echo "<div class='col-8'>
                         <a class='flex-column d-flex align-items center' href='/frontend/shopping-list/shopping-list.php'>
-                            <i class='col-12 text-center fa-regular fa-basket-shopping'><div class='badge'>4</div></i>
-                            <div class='mt-1 col-12 text-center header-subtext'>Winkelwagen</div>
+                             <i class='col-12 text-center fa-regular fa-basket-shopping'> <!-- <div class='badge'>4</div>--></i>
                         </a>
                     </div>";
                 echo "<div class='col-4'>
                             <a class='flex-column d-flex align-items-center' onclick='logout()'>
                                 <i class='col-12 text-center fa-regular fa-user'></i>
-                                <div class='mt-1 col-12 text-center header-subtext'>Profiel</div>
                             </a>
                      </div>";
             } else {
